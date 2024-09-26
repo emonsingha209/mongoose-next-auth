@@ -21,13 +21,13 @@ This guide outlines the steps to integrate MongoDB using Mongoose and implement 
    - Add MongoDB URI, Google OAuth credentials, and NextAuth secret
 
 4. **MongoDB Connection**
-   - Set up a MongoDB connection utility in `lib/mongodb.ts`
+   - Set up a MongoDB connection utility in `lib/mongodb.js`
 
 5. **User Model**
-   - Define the User schema in `models/User.ts`
+   - Define the User schema in `models/User.js`
 
 6. **NextAuth Configuration**
-   - Set up NextAuth API route in `app/api/auth/[...nextauth]/route.ts`
+   - Set up NextAuth API route in `app/api/auth/[...nextauth]/route.js`
    - Configure Google provider and callbacks
 
 7. **Authentication Implementation**
@@ -42,10 +42,10 @@ This guide outlines the steps to integrate MongoDB using Mongoose and implement 
 
 ## Key Files
 
-- `lib/mongodb.ts`: MongoDB connection utility
-- `models/User.ts`: Mongoose User model
-- `app/api/auth/[...nextauth]/route.ts`: NextAuth configuration
-- `middleware.ts`: Route protection middleware
+- `lib/mongodb.js`: MongoDB connection utility
+- `models/User.js`: Mongoose User model
+- `app/api/auth/[...nextauth]/route.js`: NextAuth configuration
+- `middleware.js`: Route protection middleware
 
 ## Environment Variables
 
