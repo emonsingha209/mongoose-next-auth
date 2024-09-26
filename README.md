@@ -1,37 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Connecting Mongoose with NextAuth.js in Next.js
 
-## Getting Started
+This guide outlines the steps to integrate MongoDB using Mongoose and implement Google authentication with NextAuth.js in a Next.js project.
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js and npm installed
+- MongoDB Atlas account or local MongoDB setup
+- Google Cloud Console account
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup Steps
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Initialize Next.js Project**
+   - Create a new Next.js project using `create-next-app`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. **Install Dependencies**
+   - Install `next-auth`, `mongoose`, and related types
 
-## Learn More
+3. **Environment Configuration**
+   - Create `.env.local` file
+   - Add MongoDB URI, Google OAuth credentials, and NextAuth secret
 
-To learn more about Next.js, take a look at the following resources:
+4. **MongoDB Connection**
+   - Set up a MongoDB connection utility in `lib/mongodb.ts`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **User Model**
+   - Define the User schema in `models/User.ts`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+6. **NextAuth Configuration**
+   - Set up NextAuth API route in `app/api/auth/[...nextauth]/route.ts`
+   - Configure Google provider and callbacks
 
-## Deploy on Vercel
+7. **Authentication Implementation**
+   - Use NextAuth hooks in components for authentication state
+   - Implement sign-in and sign-out functionality
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+8. **Route Protection**
+   - Set up middleware for protecting routes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-"# mongoose-next-auth" 
+9. **Run Development Server**
+   - Start the Next.js development server
+
+## Key Files
+
+- `lib/mongodb.ts`: MongoDB connection utility
+- `models/User.ts`: Mongoose User model
+- `app/api/auth/[...nextauth]/route.ts`: NextAuth configuration
+- `middleware.ts`: Route protection middleware
+
+## Environment Variables
+
+Ensure these are set in `.env.local`:
+- `MONGODB_URI`
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `NEXTAUTH_SECRET`
+- `NEXTAUTH_URL`
+
+## Google OAuth Setup
+
+1. Create a project in Google Cloud Console
+2. Enable Google+ API
+3. Create OAuth 2.0 credentials
+4. Set authorized origins and redirect URIs
+
+## Deployment Notes
+
+- Configure environment variables on the hosting platform
+- Update OAuth settings for production URL
+- Ensure database connection string is correct for production
+
+## Additional Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [NextAuth.js Documentation](https://next-auth.js.org/)
+- [Mongoose Documentation](https://mongoosejs.com/docs/)
+
+For detailed code implementation, refer to the project files in this repository.
